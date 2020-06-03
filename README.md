@@ -16,6 +16,12 @@ To deal with the "n" player system we see some basic rules in the game, such as 
 
 I call this Event based damage evolution algorithm. Event such as bullet fired , greaned exploded etc.
 
-Now lets go through how the algorithm acts on its base level. And we will try to go it usig Backtracking.
+Now lets go through how the algorithm acts on its base level. And we will try to do it using Backtracking.
 
-What do we need the program to give output as? We want it to give the damage delt to each of the player 
+What do we need the program to give output as? Damage delt to each of the player because of the event just happned. So I mapped the output qubit's probability of being in down state to be equal to damage taken by the corrosponding player, mapping 0 to 0 and 1 to 100. For each player there is a output qubit defined at the end of the circuit.
+
+Now lets see how we calacuate damage.
+
+To make this algorithm generalised i too the number of source for damage to be "m". So there are m number of damage source in this circuit. What more do we need to generalse it? Each damage sourse has its own constraint such as it the greanade exploded was on land or water and many more, taking this into account this algorithm takes l_1,1_2,...,l_m constraint for 1st,2nd,...,mth source respectively. If you see in the figure you can see the qubit q[2n] to q[2n+m-1] qubit to be dammage source, and for each damage source qubit q[2n+m] to q[2n+m+l1-1] to be constrain of 1st ddamage source. I took the took the total number of constraint added to L(l_1+l_2+...+l_m = L)
+so the mth source constraint are q[2n+m+l-l_m] to q[2n+m+L-1]
+
